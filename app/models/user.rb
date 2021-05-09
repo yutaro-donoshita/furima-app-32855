@@ -8,8 +8,6 @@ class User < ApplicationRecord
   # 全カラム必須とする
   with_options presence: true do
     validates :nickname
-    validates :email
-    validates :password
     validates :first_name
     validates :first_name_kana
     validates :last_name
@@ -26,7 +24,7 @@ class User < ApplicationRecord
   validates :password, length: { minimum: 6 }
 
   # 本人情報確認のvalidation
-  REALNAME_REGEX = /\A[ぁ-んァ-ン一-龥]+\z/.freeze
+  REALNAME_REGEX = /\A[ぁ-んァ-ン一-龥々]+\z/
   KANA_REGEX = /\A[ァ-ン]+\z/.freeze
 
   with_options format: { with: REALNAME_REGEX, message: 'には全角文字を使用してください' } do

@@ -8,6 +8,7 @@ RSpec.describe User, type: :model do
   describe 'ユーザー新規登録' do
     context '新規登録がうまくいくとき' do
       it 'nickname, email, password, password_confirmation, 姓名とそのフリガナ, 誕生日があれば登録できる' do
+        @user
         expect(@user).to be_valid
       end
       it 'メールアドレスに@が含まれれば登録できる' do
@@ -27,7 +28,7 @@ RSpec.describe User, type: :model do
         it 'nicknameが空欄では登録できない' do
           @user.nickname = ''
           @user.valid?
-          expect(@user.errors.full_messages).to include('ニックネームを入力してください')
+          expect(@user.errors.full_messages).to include("Nicknameを入力してください")
         end
         it 'emailが空欄では登録できない' do
           @user.email = ''
@@ -47,27 +48,27 @@ RSpec.describe User, type: :model do
         it 'first_nameが空欄では登録できない' do
           @user.first_name = ''
           @user.valid?
-          expect(@user.errors.full_messages).to include('姓を入力してください')
+          expect(@user.errors.full_messages).to include("First nameを入力してください")
         end
         it 'first_name_kanaが空欄では登録できない' do
           @user.first_name_kana = ''
           @user.valid?
-          expect(@user.errors.full_messages).to include('姓（フリガナ）を入力してください')
+          expect(@user.errors.full_messages).to include("First name kanaを入力してください")
         end
         it 'last_nameが空欄では登録できない' do
           @user.last_name = ''
           @user.valid?
-          expect(@user.errors.full_messages).to include('名を入力してください')
+          expect(@user.errors.full_messages).to include("Last nameを入力してください")
         end
         it 'last_name_kanaが空欄では登録できない' do
           @user.last_name_kana = ''
           @user.valid?
-          expect(@user.errors.full_messages).to include('名（フリガナ）を入力してください')
+          expect(@user.errors.full_messages).to include("Last name kanaを入力してください")
         end
         it 'birth_dateが空欄では登録できない' do
           @user.birth_date = ''
           @user.valid?
-          expect(@user.errors.full_messages).to include('誕生日を入力してください')
+          expect(@user.errors.full_messages).to include("Birth dateを入力してください")
         end
       end
 
@@ -120,32 +121,32 @@ RSpec.describe User, type: :model do
           it '姓に半角文字が含まれると登録できない' do
             @user.first_name += 'ﾜﾚﾜﾚﾊｳﾁｭｳｼﾞﾝﾀﾞ'
             @user.valid?
-            expect(@user.errors.full_messages).to include('姓には全角文字を使用してください')
+            expect(@user.errors.full_messages).to include("First nameには全角文字を使用してください")
           end
           it '姓（フリガナ）半角文字が含まれると登録できない' do
             @user.first_name_kana += 'ﾜﾚﾜﾚﾊｳﾁｭｳｼﾞﾝﾀﾞ'
             @user.valid?
-            expect(@user.errors.full_messages).to include('姓（フリガナ）には全角カタカナを使用してください')
+            expect(@user.errors.full_messages).to include("First name kanaには全角カタカナを使用してください")
           end
           it '姓（フリガナ）にカタカナ以外が含まれると登録できない' do
             @user.first_name_kana += 'これこれ'
             @user.valid?
-            expect(@user.errors.full_messages).to include('姓（フリガナ）には全角カタカナを使用してください')
+            expect(@user.errors.full_messages).to include("First name kanaには全角カタカナを使用してください")
           end
           it '名に半角文字が含まれると登録できない' do
             @user.last_name += 'ﾜﾚﾜﾚﾊｳﾁｭｳｼﾞﾝﾀﾞ'
             @user.valid?
-            expect(@user.errors.full_messages).to include('名には全角文字を使用してください')
+            expect(@user.errors.full_messages).to include("Last nameには全角文字を使用してください")
           end
           it '名（フリガナ）に半角文字が含まれると登録できない' do
             @user.last_name_kana += 'ﾜﾚﾜﾚﾊｳﾁｭｳｼﾞﾝﾀﾞ'
             @user.valid?
-            expect(@user.errors.full_messages).to include('名（フリガナ）には全角カタカナを使用してください')
+            expect(@user.errors.full_messages).to include("Last name kanaには全角カタカナを使用してください")
           end
           it '名（フリガナ）にカタカナ以外が含まれると登録できない' do
             @user.last_name_kana += 'これこれ'
             @user.valid?
-            expect(@user.errors.full_messages).to include('名（フリガナ）には全角カタカナを使用してください')
+            expect(@user.errors.full_messages).to include("Last name kanaには全角カタカナを使用してください")
           end
         end
       end

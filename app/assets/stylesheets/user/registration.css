@@ -99,7 +99,7 @@
   flex-wrap: wrap;
 }
 
-.input-birth-wrap select {
+.input-birth-wrap>select {
   width: 75px;
   margin-top: 5px;
   height: 45px;
@@ -111,15 +111,10 @@
   cursor: pointer;
 }
 
-.input-birth-wrap p {
+.input-birth-wrap>p {
   line-height: 60px;
   padding: 0 5px;
 }
-
-.field_with_errors {
-  display: contents;
-}
-
 
 .form-bottom-text {
   font-size: 15px;

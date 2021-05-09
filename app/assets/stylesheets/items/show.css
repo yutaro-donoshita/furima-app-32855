@@ -76,7 +76,6 @@
 .item-explain-box {
   font-size: 18px;
   margin: 40px 0px;
-  overflow-wrap: anywhere;
 }
 
 .detail-table {
@@ -137,7 +136,6 @@
 .report-flag-icon {
   margin-right: 5px;
 }
-
 
 /* /商品の概要 */
 

@@ -1,5 +1,4 @@
 function price (){
-console.log("OK")
   const priceForm = document.getElementById("item-price");
   priceForm.addEventListener("keyup", () => {
     const countPrice = priceForm.value;

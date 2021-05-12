@@ -13,11 +13,12 @@
       フリマアプリです
     </p>
     <div class='store-btn'>
-      <%= link_to image_tag("https://linkmaker.itunes.apple.com/ja-jp/badge-lrg.svg?releaseDate=2011-09-21&kind=iossoftware&bubble=ios_apps", class:"apple-btn"), "#" %>
-      <%= link_to image_tag("dl-android.png", class:"google-btn"), "#" %>
+      <%= link_to image_tag("app-store.svg", class:"apple-btn"), "#" %>
+      <%= link_to image_tag("google-play.png", class:"google-btn"), "#" %>
     </div>
   </div>
   <%# /画面上部の「人生を変えるフリマアプリ」帯部分  %>
+
   <%# FURIMAが選ばれる3つの理由部分 %>
   <div class='select-reason-contents'>
     <h2 class='title'>
@@ -60,6 +61,7 @@
     </ul>
   </div>
   <%# /FURIMAが選ばれる3つの理由部分 %>
+
   <%# 画面中央の「会員数日本一位」帯部分 %>
   <div class='ad-contents'>
     <h2 class='ad-title'>
@@ -75,11 +77,12 @@
       ほしかったあの商品に出会えるかもしれません。
     </p>
     <div class='store-btn'>
-      <%= link_to image_tag("https://linkmaker.itunes.apple.com/ja-jp/badge-lrg.svg?releaseDate=2011-09-21&kind=iossoftware&bubble=ios_apps", class:"apple-btn"), "#" %>
-      <%= link_to image_tag("dl-android.png", class:"google-btn"), "#" %>
+      <%= link_to image_tag("app-store.svg", class:"apple-btn"), "#" %>
+      <%= link_to image_tag("google-play.png", class:"google-btn"), "#" %>
     </div>
   </div>
   <%# /画面中央の「会員数日本一位」帯部分 %>
+
   <%# FURIMAの特徴 %>
   <div class='feature-contents'>
     <h2 class='title'>
@@ -117,22 +120,22 @@
   </div>
   <%# /FURIMAの特徴 %>
 
-  
+  <%# 商品一覧 %>
   <div class='item-contents'>
     <h2 class='title'>ピックアップカテゴリー</h2>
     <%= link_to '新規投稿商品', "#", class: "subtitle" %>
     <ul class='item-lists'>
-
       <% @items.each do |item| %>
       <li class='list'>
-        <%= link_to item_path(item.id) do %>
+        <%= link_to "#" do %>
         <div class='item-img-content'>
           <%= image_tag item.item_image.variant(resize:'500x500'), class: "item-img" %>
-          <% if item.order != nil %>
+
+          <%# 商品が売れていればsold outを表示しましょう %>
           <div class='sold-out'>
             <span>Sold Out!!</span>
           </div>
-          <% end %>
+          <%# //商品が売れていればsold outを表示しましょう %>
 
         </div>
         <div class='item-info'>
@@ -140,7 +143,7 @@
             <%= item.item_name %>
           </h3>
           <div class='item-price'>
-            <span><%= item.price %>円<br><%= item.delivery_fee.name %></span>
+            <span><%= "販売価格" %>円<br><%= '配送料負担' %></span>
             <div class='star-btn'>
               <%= image_tag "star.png", class:"star-icon" %>
               <span class='star-count'>0</span>
@@ -150,11 +153,12 @@
         <% end %>
       </li>
       <% end %>
+
       <% if @items.blank? %>
-      
+
       <li class='list'>
         <%= link_to '#' do %>
-        <%= image_tag "https://tech-master.s3.amazonaws.com/uploads/curriculums/images/Rails1-4/sample.jpg", class: "item-img" %>
+        <%= link_to image_tag("sample.jpeg", class:"item-img"), "#" %>
         <div class='item-info'>
           <h3 class='item-name'>
             商品を出品してね！
@@ -169,14 +173,14 @@
         </div>
         <% end %>
       </li>
-
       <% end %>
     </ul>
   </div>
-  
+  <%# /商品一覧 %>
 </div>
 <%= link_to(new_item_path, class: 'purchase-btn') do %>
   <span class='purchase-btn-text'>出品する</span>
   <%= image_tag 'icon_camera.png' , size: '185x50' ,class: "purchase-btn-icon" %>
 <% end %>
+
 <%= render "shared/footer" %>

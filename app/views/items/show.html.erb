@@ -8,11 +8,11 @@
     </h2>
     <div class="item-img-content">
       <%= image_tag @item.item_image.variant(resize:'500x500') ,class:"item-box-img" %>
-      <%# 商品が売れている場合は、sold outを表示しましょう %>
+
       <div class="sold-out">
         <span>Sold Out!!</span>
       </div>
-      <%# //商品が売れている場合は、sold outを表示しましょう %>
+
     </div>
     <div class="item-price-box">
       <span class="item-price">
@@ -101,8 +101,8 @@
       後ろの商品 ＞
     </a>
   </div>
-  <%# 詳細ページで表示されている商品のカテゴリー名を表示しましょう %>
+
   <a href="#" class="another-item"><%= "商品のカテゴリー名" %>をもっと見る</a>
-  <%# //詳細ページで表示されている商品のカテゴリー名を表示しましょう %>
+
 </div>
 <%= render "shared/footer" %>

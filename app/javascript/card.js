@@ -6,7 +6,7 @@ const pay = () => {
 
       const formResult = document.getElementById("charge-form");
       const formData = new FormData(formResult);
-  
+
       const card = {
         number: formData.get("order_address[number]"),
         cvc: formData.get("order_address[cvc]"),
@@ -20,7 +20,7 @@ const pay = () => {
           const renderDom = document.getElementById("charge-form");
           const tokenObj = `<input value=${token} name='token' type="hidden"> `;
           renderDom.insertAdjacentHTML("beforeend", tokenObj);
-          
+
         }
 
         document.getElementById("card-number").removeAttribute("name");
@@ -31,4 +31,4 @@ const pay = () => {
       });
   });
 };
-window.addEventListener("load", pay);
+window.addEventListener("load", pay); 
